@@ -3,11 +3,11 @@
 namespace DataAccess
 {
     public interface IProductData
-    {
-        Task Delete(int id);
-        Task<IEnumerable<Product>> GetAll();
-        Task<Product?> GetById(int id);
-        Task Insert(Product product);
-        Task Update(Product product);
+    {        
+        Task<IEnumerable<Product>> GetAllAsync();
+        Task<Product?> GetByIdAsync(int id);
+        Task InsertAsync(Product product);
+        Task UpdateAsync(Product product);
+        Task DeleteAsync(int id);
     }
 }

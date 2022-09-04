@@ -16,19 +16,19 @@ namespace DataAccess
             this._db = db;
         }
 
-        public async Task<IEnumerable<Product>> GetAll() => await _db.LoadDataAsync<Product, dynamic>("dbo.WebAPI_Products_GetAll", new { });
+        public async Task<IEnumerable<Product>> GetAllAsync() => await _db.LoadDataAsync<Product, dynamic>("dbo.WebAPI_Products_GetAll", new { });
 
-        public async Task<Product?> GetById(int id)
+        public async Task<Product?> GetByIdAsync(int id)
         {
             var results = await _db.LoadDataAsync<Product, dynamic>("dbo.WebAPI_Products_GetById", new { Id = id });
 
             return results.FirstOrDefault();
         }
 
-        public Task Insert(Product product) => _db.SaveDataAsync("dbo.WebAPI_Products_Insert", new { product.ProductName, product.Price, product.Quantity, product.IsActive });
+        public Task InsertAsync(Product product) => _db.SaveDataAsync("dbo.WebAPI_Products_Insert", new { product.ProductName, product.Price, product.Quantity, product.IsActive });
 
-        public Task Update(Product product) => _db.SaveDataAsync("dbo.WebAPI_Products_Update", product);
+        public Task UpdateAsync(Product product) => _db.SaveDataAsync("dbo.WebAPI_Products_Update", product);
 
-        public Task Delete(int id) => _db.SaveDataAsync("dbo.WebAPI_Products_Delete", new { Id = id });
+        public Task DeleteAsync(int id) => _db.SaveDataAsync("dbo.WebAPI_Products_Delete", new { Id = id });
     }
 }
