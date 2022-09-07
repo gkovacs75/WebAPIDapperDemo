@@ -7,13 +7,14 @@ using System.Collections.Generic;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/products")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductsV1Controller : ControllerBase
     {
         private readonly IProductData _productData;
 
-        public ProductsController(IProductData productData)
+        public ProductsV1Controller(IProductData productData)
         {
             this._productData = productData;
         }

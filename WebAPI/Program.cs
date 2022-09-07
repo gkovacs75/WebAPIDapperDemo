@@ -1,4 +1,5 @@
 using DataAccess;
+using Microsoft.AspNetCore.Mvc.Versioning;
 
 namespace WebAPI
 {
@@ -16,6 +17,13 @@ namespace WebAPI
             builder.Services.AddSwaggerGen();
             builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
             builder.Services.AddSingleton<IProductData, ProductData>();
+            builder.Services.AddApiVersioning(options =>
+            {
+                options.ReportApiVersions = true;
+                options.AssumeDefaultVersionWhenUnspecified = false;
+                options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+                options.ApiVersionReader = new HeaderApiVersionReader("X-API-Version");
+            });
 
             var app = builder.Build();
 
